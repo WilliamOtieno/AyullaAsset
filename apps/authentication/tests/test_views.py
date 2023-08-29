@@ -1,9 +1,8 @@
 from django.test import Client, TestCase, RequestFactory
 from django.contrib.auth.models import User
-from django.contrib.sessions.middleware import SessionMiddleware
 from django.urls import reverse
 from ...core.models import ReferralCode
-from ..views import LoginView, LogoutView, SignUpView
+from ..views import LoginView, SignUpView
 
 
 class TestAuthViews(TestCase):
