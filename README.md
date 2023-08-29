@@ -12,4 +12,4 @@
 - To run tests:
     - `make test`
 - For test coverage report:
-    - `make coverage`
+    - `make coverage` (Currently above 90%)
