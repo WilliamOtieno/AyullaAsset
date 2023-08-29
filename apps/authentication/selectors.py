@@ -7,4 +7,3 @@ def get_referral_code(code: str) -> ReferralCode | None:
         return ref
     except ReferralCode.DoesNotExist:
         return None
-

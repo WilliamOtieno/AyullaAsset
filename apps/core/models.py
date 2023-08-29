@@ -8,10 +8,10 @@ class TimestampModel(models.Model):
 
     class Meta:
         abstract = True
-        ordering = ('-updated_at', )
+        ordering = ("-updated_at",)
 
 
-class ReferralCode(TimestampModel): 
+class ReferralCode(TimestampModel):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     code = models.CharField(max_length=32, unique=True, db_index=True)
     points = models.IntegerField(default=0)
@@ -29,4 +29,3 @@ class Referral(TimestampModel):
 class PortfolioCoin(TimestampModel):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     coin_id = models.CharField(max_length=32)
-

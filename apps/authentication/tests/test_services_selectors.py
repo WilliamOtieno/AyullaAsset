@@ -7,10 +7,13 @@ from ...core.models import ReferralCode
 
 
 class ServicesTests(TestCase):
-
     def setUp(self):
-        self.user = User.objects.create_user(username='test.user', password=get_random_string(12))
-        self.referral_code = ReferralCode.objects.create(user=self.user, code="TESTCODE")
+        self.user = User.objects.create_user(
+            username="test.user", password=get_random_string(12)
+        )
+        self.referral_code = ReferralCode.objects.create(
+            user=self.user, code="TESTCODE"
+        )
 
     def test_get_referral_code_exists(self):
         code = "TESTCODE"
@@ -36,4 +39,3 @@ class ServicesTests(TestCase):
         code = "INVALIDCODE"
 
         award_referee(code)  # This should not raise an error since the code is invalid
-

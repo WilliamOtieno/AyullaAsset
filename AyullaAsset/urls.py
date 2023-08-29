@@ -21,4 +21,3 @@ urlpatterns = [
     path("", include("apps.core.urls", namespace="core")),
     path("auth/", include("apps.authentication.urls", namespace="authentication")),
 ]
-

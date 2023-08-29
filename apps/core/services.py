@@ -11,14 +11,14 @@ def get_top_ranked_currencies() -> list:
         "per_page": "10",
         "sparkline": "false",
         "price_change_percentage": "24h",
-        "locale": "en"
+        "locale": "en",
     }
     url = f"{settings.COINGECKO_BASE_URL}/coins/markets/"
     resp = requests.get(url, params=params)
     res = []
     print({resp.status_code, resp.reason})
     if resp.ok:
-        res = resp.json() 
+        res = resp.json()
     return res
 
 

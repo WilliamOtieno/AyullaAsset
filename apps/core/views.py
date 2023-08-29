@@ -22,7 +22,7 @@ class HomeView(TemplateView):
         return context
 
 
-class PortfolioView(LoginRequiredMixin,TemplateView):
+class PortfolioView(LoginRequiredMixin, TemplateView):
     template_name = "portfolio.html"
 
     def get_context_data(self, **kwargs):
@@ -35,4 +35,3 @@ class PortfolioView(LoginRequiredMixin,TemplateView):
         context["coins"] = get_user_coins(self.request.user)
         context["bonus"] = get_total_referral_bonus(self.request.user)
         return context
-

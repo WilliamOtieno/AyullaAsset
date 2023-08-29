@@ -11,7 +11,7 @@ class LoginView(View):
     def get(self, request, *args, **kwargs):
         context = {}
         return render(request, "login.html", context)
-    
+
     def post(self, request, *args, **kwargs):
         username = self.request.POST.get("username")
         password = self.request.POST.get("password")
@@ -33,7 +33,7 @@ class SignUpView(View):
     def get(self, request, *args, **kwargs):
         context = {}
         return render(request, "signup.html", context)
-    
+
     def post(self, request, *args, **kwargs):
         context = {}
         username = self.request.POST.get("username")
@@ -50,4 +50,3 @@ class SignUpView(View):
             award_referee(referal_code)
             Referral.objects.create(inviter=code_obj.user, invitee=user, code=code_obj)
         return redirect("core:portfolio")
-

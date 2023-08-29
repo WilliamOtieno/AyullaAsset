@@ -6,4 +6,3 @@ def award_referee(code):
     if ref_obj is not None:
         ref_obj.points += 5
         ref_obj.save()
-
