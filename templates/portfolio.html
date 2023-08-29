@@ -1,0 +1,44 @@
+<h2>My Portfolio</h2>
+
+<p><a href="{% url 'core:index' %}">Home</a></p>
+
+
+<h3>My Coins</h3>
+<table>
+  <tr>
+    <th>Symbol</th>
+    <th>Name</th>
+    <th>Rank</th>
+    <th>Thumbnail</th>
+
+  </tr>
+{% for coin in coins %}
+<tr>
+  <td>{{ coin.symbol|upper }}</td>
+  <td>{{ coin.name }}</td>
+  <td>$ {{ coin.market_data.current_price.usd }}</td>
+  <td><img src="{{ coin.image.thumb }}" alt=""></td>
+  
+
+{% endfor %}
+</tr>
+</table>
+
+<hr />
+
+<h3>My Referrals</h3>
+<h5>Bonus Gained: +{{ bonus }}</h5>
+<table>
+  <tr>
+    <th>#</th>
+    <th>Invitee</th>
+    <th>Code Used</th>
+  </tr>
+{% for referral in referrals %}
+<tr>
+  <td>{{ forloop.counter }}</td>
+  <td>{{ referral.invitee }}</td>
+  <td>{{ referral.code.code }}</td>
+{% endfor %}
+</tr>
+

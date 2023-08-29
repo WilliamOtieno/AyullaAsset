@@ -1,0 +1,74 @@
+<h2>Home Page</h2>
+{% if user.is_authenticated %}
+<p>Authenticated As: {{ user }}</p>
+<div>
+  <p><a href="{% url 'authentication:logout' %}">Log Out</a></p>
+  <p><a href="{% url 'core:portfolio' %}">My Portfolio</a></p>
+</div>
+{% else %}
+<div>
+  <p><a href="{% url 'authentication:login' %}">Log In</a></p>
+  <p><a href="{% url 'authentication:signup' %}">Sign Up</a></p>
+</div>
+{% endif %}
+<h3>Top 10 Coins</h3>
+<table>
+  <tr>
+    <th>Symbol</th>
+    <th>Name</th>
+    <th>% Change</th>
+    <th>Price</th>
+    <th>Quantity/Vol</th>
+    <th>Thumbnail</th>
+    {% if user.is_authenticated %}
+    <th>Action</th
+    {% endif %}
+  </tr>
+{% for item in data %}
+<tr>
+  <td>{{ item.symbol|upper }}</td>
+  <td>{{ item.name }}</td>
+  <td>{{ item.price_change_percentage_24h }}</td>
+  <td>{{ item.current_price }}</td>
+  <td>{{ item.total_volume }}</td>
+<td><img src="{{ item.image }}" style="width:25px;height:25px;" alt=""></td>
+  {% if user.is_authenticated %}
+  <td><a href="?coin_id={{ item.id }}">Add to Portfolio</a></td>
+  {% endif %}
+
+{% endfor %}
+</tr>
+
+</table>
+<hr />
+<form method="get">
+  <input type="text" name="query" placeholder="Search..">
+  <button type="submit">Submit</button>
+</form>
+{% if search_data %}
+<h3>Search Results</h3>
+<table>
+  <tr>
+    <th>Symbol</th>
+    <th>Name</th>
+    <th>Rank</th>
+    <th>Thumbnail</th>
+    {% if user.is_authenticated %}
+    <th>Action</th
+    {% endif %}
+  </tr>
+{% for item in search_data %}
+<tr>
+  <td>{{ item.symbol|upper }}</td>
+  <td>{{ item.name }}</td>
+  <td>{{ item.market_cap_rank }}</td>
+  <td><img src="{{ item.thumb }}" alt=""></td>
+  {% if user.is_authenticated %}
+  <td><a href="?coin_id={{ item.id }}">Add to Portfolio</a></td>
+  {% endif %}
+
+{% endfor %}
+</tr>
+</table>
+{% endif %}
+

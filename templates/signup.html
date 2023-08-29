@@ -1,0 +1,8 @@
+<form method="post">
+  {% csrf_token %}
+  <input required type="text" name="username" placeholder="Username*"></input>
+  <input required type="password" name="password1" placeholder="Password*"></input>
+  <input required type="password" name="password2" placeholder="Confirm Password*"></input>
+  <input type="text" name="code" placeholder="Referral Code"></input>
+  <input type="submit" placeholder="Submit"></input>
+</form>
